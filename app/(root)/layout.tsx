@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils"
-import Footer from "@/modules/home/footer"
+import {Footer} from "@/modules/home/footer"
 import {Header} from "@/modules/home/header"
 import { Metadata } from "next"
 
@@ -28,7 +28,7 @@ export default function HomeLayout({children}:{children: React.ReactNode}) {
                 )}
             />
             {/* Main */}
-            <main className="z-20 relative pt-0 w-full border-2 border-orange-200">
+            <main className="z-20 relative pt-0 w-full">
                 {children}
             </main>
 
