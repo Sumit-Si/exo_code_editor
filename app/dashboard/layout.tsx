@@ -14,14 +14,16 @@ export default async function DashboardLayout({children}: {children:React.ReactN
         HONO: "FlameIcon",
         ANGULAR: "Terminal"
     }
-
+    
+    
+        //TODO: star
     const formattedPlaygroundData = playgroundData?.map(playground => ({
         id: playground.id,
         title: playground.title,
-        //TODO: star
-        starred: false,
+        starred: playground.starmark?.[0]?.isMarked || false,
         icon: technologyIconMap[playground.template] || "Code2"
     }));
+    console.log(formattedPlaygroundData,"formattedPlayData");
 
     return (
         <SidebarProvider>

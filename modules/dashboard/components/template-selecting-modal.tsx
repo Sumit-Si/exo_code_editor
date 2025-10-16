@@ -306,7 +306,7 @@ const TemplateSelectionModal = ({
                               alt={`${template.name} icon`}
                               width={40}
                               height={40}
-                              className="object-contain"
+                              className={`object-contain ${template.icon.toLowerCase().includes("express") ? "bg-white rounded-lg p-1" : ""}`}
                             />
                           </div>
 
