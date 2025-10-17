@@ -82,7 +82,7 @@ export const createPlayground = async (data: {
                 title,
                 description,
                 template,
-                userId: user?.id!
+                userId: user?.id
             }
         })
 
