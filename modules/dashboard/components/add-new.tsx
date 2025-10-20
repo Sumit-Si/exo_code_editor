@@ -15,9 +15,9 @@ const AddNewButton = () => {
     template: "REACT" | "NEXTJS" | "EXPRESS" | "VUE" | "HONO" | "ANGULAR";
     description?: string;
   } | null>(null)
-  const router = useRouter()
+  const router = useRouter();
 
-  const handleSubmit = async(data: {
+  const handleSubmit = async (data: {
     title: string;
     template: "REACT" | "NEXTJS" | "EXPRESS" | "VUE" | "HONO" | "ANGULAR";
     description?: string;

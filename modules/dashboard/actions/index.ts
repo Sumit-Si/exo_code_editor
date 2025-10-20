@@ -73,7 +73,7 @@ export const createPlayground = async (data: {
     description?: string,
 }) => {
     const user = await currentUser();
-
+    
     const {template,title,description} = data;
 
     try {
@@ -88,7 +88,7 @@ export const createPlayground = async (data: {
 
         return playground;
     } catch (error) {
-        console.log(error,"error");
+        console.error(error,"error while creating playground");
         
     }
 }

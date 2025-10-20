@@ -40,7 +40,7 @@ import Image from "next/image"
 // Define the interface for a single playground item, icon is now a string
 interface PlaygroundData {
   id: string
-  name: string
+  title: string
   icon: string // Changed to string
   starred: boolean
 }
@@ -114,11 +114,11 @@ export function DashboardSidebar({ initialPlaygroundData }: { initialPlaygroundD
                       <SidebarMenuButton
                         asChild
                         isActive={pathname === `/playground/${playground.id}`}
-                        tooltip={playground.name}
+                        tooltip={playground.title}
                       >
                         <Link href={`/playground/${playground.id}`}>
                           {IconComponent && <IconComponent className="h-4 w-4" />}
-                          <span>{playground.name}</span>
+                          <span>{playground.title}</span>
                         </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -147,11 +147,11 @@ export function DashboardSidebar({ initialPlaygroundData }: { initialPlaygroundD
                       <SidebarMenuButton
                         asChild
                         isActive={pathname === `/playground/${playground.id}`}
-                        tooltip={playground.name}
+                        tooltip={playground.title}
                       >
                         <Link href={`/playground/${playground.id}`}>
                           {IconComponent && <IconComponent className="h-4 w-4" />}
-                          <span>{playground.name}</span>
+                          <span>{playground.title}</span>
                         </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>

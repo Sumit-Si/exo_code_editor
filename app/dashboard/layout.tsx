@@ -32,7 +32,7 @@ export default async function DashboardLayout({children}: {children:React.ReactN
                     {/* @ts-expect-error -> ts error */}
                     <DashboardSidebar initialPlaygroundData={formattedPlaygroundData} />
 
-                    <main className="border border-red-500 flex-1">
+                    <main className="flex-1">
                         {children}
                     </main>
                 </div>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -149,17 +148,20 @@ const TemplateSelectionModal = ({
   >("all");
   const [projectName, setProjectName] = useState("");
 
-//Todo Implement Filter Here
-    const filteredTemplates = templates.filter((template) => {
-        const matchesSearch = 
-        template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        template.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        template.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+  //Todo Implement Filter Here
+  const filteredTemplates = templates.filter((template) => {
+    const matchesSearch =
+      template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      template.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      template.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
-        const matchesCategory = category === "all" || template.category === category;
+    const matchesCategory =
+      category === "all" || template.category === category;
 
-        return matchesCategory && matchesSearch;
-    })
+    return matchesCategory && matchesSearch;
+  });
 
   const handleSelectTemplate = (templateId: string) => {
     setSelectedTemplate(templateId);
@@ -186,9 +188,19 @@ const TemplateSelectionModal = ({
       };
 
       const template = templates.find((t) => t.id === selectedTemplate);
-      
 
-     
+      onSubmit({
+        title: projectName || `New ${template?.name} Project`,
+        template: templateMap[selectedTemplate] || "REACT",
+        description: template?.description,
+      });
+
+      console.log(
+        `Creating ${projectName || "new project"} with template: ${
+          template?.name
+        }`
+      );
+
       onClose();
       // Reset state for next time
       setStep("select");
@@ -280,10 +292,10 @@ const TemplateSelectionModal = ({
                       <div
                         key={template.id}
                         className={`relative flex p-6 border rounded-lg cursor-pointer transition-all duration-300 hover:scale-[1.02] ${
-                            selectedTemplate === template.id
-                              ? "border-[#E93F3F]  shadow-[0_0_0_1px_#E93F3F,0_8px_20px_rgba(233,63,63,0.15)]"
-                              : "hover:border-[#E93F3F] shadow-[0_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.1)]"
-                          }`}
+                          selectedTemplate === template.id
+                            ? "border-[#E93F3F]  shadow-[0_0_0_1px_#E93F3F,0_8px_20px_rgba(233,63,63,0.15)]"
+                            : "hover:border-[#E93F3F] shadow-[0_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.1)]"
+                        }`}
                         onClick={() => handleSelectTemplate(template.id)}
                       >
                         <div className="absolute top-4 right-4 flex gap-1">
@@ -299,14 +311,18 @@ const TemplateSelectionModal = ({
                         <div className="flex gap-4">
                           <div
                             className="relative w-16 h-16 flex-shrink-0 flex items-center justify-center rounded-full"
-                            style={{ backgroundColor: `${template.color}15`}}
+                            style={{ backgroundColor: `${template.color}15` }}
                           >
                             <Image
                               src={template.icon || "/placeholder.svg"}
                               alt={`${template.name} icon`}
                               width={40}
                               height={40}
-                              className={`object-contain ${template.icon.toLowerCase().includes("express") ? "bg-white rounded-lg p-1" : ""}`}
+                              className={`object-contain ${
+                                template.icon.toLowerCase().includes("express")
+                                  ? "bg-white rounded-lg p-1"
+                                  : ""
+                              }`}
                             />
                           </div>
 
