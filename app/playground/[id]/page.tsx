@@ -33,7 +33,7 @@ import WebContainerPreview from "@/modules/webcontainers/components/webcontainer
 import { useWebContainer } from "@/modules/webcontainers/hooks/useWebContainer";
 import { AlertCircle, Bot, FileText, FolderOpen, Save, Settings, X } from "lucide-react";
 import { useParams } from "next/navigation";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 const MainPlaygroundPage:React.FC = () => {
@@ -69,6 +69,8 @@ const MainPlaygroundPage:React.FC = () => {
     instance,
     // @ts-expect-error template error
   } = useWebContainer({templateData});
+
+  const lastSyncedContent = useRef<Map<string, string>>(new Map());
 
   useEffect(() => {
     setPlaygroundId(id);
